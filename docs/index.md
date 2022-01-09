@@ -1,37 +1,21 @@
-## Welcome to GitHub Pages
+# 时空图
 
-You can use the [editor on GitHub](https://github.com/YDX-2147483647/spacetime/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+试图用时空图和简单几何处理一些狭义相对论运动学问题。
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+> 要知道狭义相对论不一定非得这么学。
+>
+> 我认为这种复杂解释之所以存在了这么久，是因为爱因斯坦他当初是这么干的——他从最陡的一面去攀登物理之山。
+>
+> 我不认为现在学狭义相对论都必须重走爱因斯坦的路，尤其我们已经有优雅简洁的几何理解了。
+>
+> <footer>——<a href='https://www.bilibili.com/video/BV1wW411X7hL'>分钟物理</a>（<a href='https://www.youtube.com/watch?v=1rLWVZVWfdY&list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm'>YouTube</a>）</footer>
 
-### Markdown
+<aside class='remark'><p>不同的是，这里<strong>完全不会</strong>排斥公式，而且会找一些例题做。</p></aside>
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+感谢（不一定愿意透露姓名的）□□□ 和 □□□。
 
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/YDX-2147483647/spacetime/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+1. 时空图
+2. 光速有限
+3. 洛伦兹变换
+4. 一些相对论效应
+5. 在自己参考系中观察别人
