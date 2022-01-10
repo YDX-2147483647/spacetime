@@ -1,0 +1,18 @@
+{
+	"Display math": {
+		"scope": "markdown",
+		"prefix": "$$",
+		"body": [
+			"",
+			"$$",
+			"\t$0",
+			"$$",
+			""
+		]
+	},
+	"Inline math": {
+		"scope": "markdown",
+		"prefix": "math",
+		"body": "\\\\\\\\($0\\\\\\\\) "
+	}
+}

@@ -1,5 +1,6 @@
 title: 时空图
 description: (时空图 + 简单几何) × 狭义相对论运动学
+
 domain: ydx-2147483647.github.io
 url: https://ydx-2147483647.github.io/
 baseurl: /spacetime
@@ -9,3 +10,6 @@ github_username: YDX-2147483647
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+
+github:
+  is_project_page: false
