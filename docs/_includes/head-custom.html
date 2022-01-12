@@ -5,7 +5,29 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
     integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
     crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js"
-    integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
+<script type="module">
+    import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.mjs";
+
+    renderMathInElement(document.body, {
+        delimiters: [
+            // 注意，Markdown编译时有可能把“$$”转换为“\[”“\]”
+            { left: '\\(', right: '\\)', display: false },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false },
+        ],
+        macros: {
+            // Jekyll's "smart quotes" feature
+            // → https://katex.org/docs/issues.html
+            "’": "'"
+        },
+    })
+</script>
+{% endif %}
+
+<!-- 虽然 KaTeX 不支持 physics 的 \vb、\qty 等，但 MathJax（第一次打开时）是真的慢…… -->
+{% if false %}
+<!-- MathJax -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 {% endif %}

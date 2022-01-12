@@ -3,6 +3,11 @@
 
 @import "{{ site.theme }}";
 
+main p,
+main li {
+    font-family: serif;
+}
+
 main p {
     text-indent: 2em;
 }
@@ -12,6 +17,22 @@ blockquote footer {
     font-family: cursive;
 }
 
+a[target="_blank"]::after {
+    content: "🡭";
+    // font-variant-position: super;
+    vertical-align: super;
+    font-size: x-small;
+}
+
+em {
+    font-family: cursive;
+    font-style: normal;
+}
+strong {
+    text-decoration: underline;
+    color: #016834;
+}
+
 aside {
     border-left: solid 0.3rem;
     padding: 0 1rem;
@@ -19,6 +40,6 @@ aside {
     color: #819198;
 }
 aside.remark {
-    background-color: #f6ffec8c;
+    background-color: #f6ffec80;
     border-color: greenyellow;
 }
