@@ -1,33 +1,47 @@
+{% if page.graph %}
+    <!-- JSXGraph -->
+    <script defer src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
+    {% for js in page.graph %}
+        <script defer src='{{ js }}'></script>
+    {% endfor %}
+    {% comment %}
+        如果想在 JSXGraph 中使用 KaTeX，则 KaTeX 需在 JSXGraph 之后。
+    {% endcomment %}
+{% endif %}
+
+
 {% if page.math %}
-<!--KaTeX-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
-    integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
-    integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
-    crossorigin="anonymous"></script>
-<script type="module">
-    import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.mjs";
+    <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+        integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"
+        integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx"
+        crossorigin="anonymous"></script>
+    <script type="module">
+        import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.mjs";
 
-    renderMathInElement(document.body, {
-        delimiters: [
-            // 注意，Markdown编译时有可能把“$$”转换为“\[”“\]”
-            { left: '\\(', right: '\\)', display: false },
-            { left: '\\[', right: '\\]', display: true },
-            { left: '$$', right: '$$', display: true },
-            { left: '$', right: '$', display: false },
-        ],
-        macros: {
-            // Jekyll's "smart quotes" feature
-            // → https://katex.org/docs/issues.html
-            "’": "'"
-        },
-    })
-</script>
+        renderMathInElement(document.body, {
+            delimiters: [
+                // 注意，Markdown编译时有可能把“$$”转换为“\[”“\]”
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true },
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+            ],
+            macros: {
+                // Jekyll's "smart quotes" feature
+                // → https://katex.org/docs/issues.html
+                "’": "'"
+            },
+        })
+    </script>
 {% endif %}
 
-<!-- 虽然 KaTeX 不支持 physics 的 \vb、\qty 等，但 MathJax（第一次打开时）是真的慢…… -->
-{% if false %}
-<!-- MathJax -->
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-{% endif %}
+
+{% comment %}
+    虽然 KaTeX 不支持 physics 的 \vb、\qty 等，但 MathJax（第一次打开时）是真的慢……
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endcomment %}

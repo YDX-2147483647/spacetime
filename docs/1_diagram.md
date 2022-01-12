@@ -2,6 +2,8 @@
 title: 1 时空图
 description: 先不急着进入相对论。
 math: true
+graph:
+    - assets/graph/1_diagram-1.js
 ---
 
 # 1 时空图
@@ -24,6 +26,13 @@ math: true
     <p>我们在中学常用$v$-$t$图，因为当时主要研究匀加速运动；而在狭义相对论这里，匀加速运动“太难了”，只能先研究匀速运动，这时$x$-$t$图更好。（后面我们还会看到，时空图确实蕴含一点儿物理。）</p>
     <p>与中学的习惯不同，这里的时间轴一般作纵轴，所以也许叫“$t$-$x$图”更好。不过这都无所谓，就叫时空图（spacetime diagram）吧。</p>
 </aside>
+
+类似地，质点的运动在“\\( Oxt\\) 平面”内用线表示。
+
+<figure>
+    <div id='graph-1' class='jxgbox' style='height: 20em; width: 20em;'></div>
+    <figcaption>闰土·鸟雀·竹匾</figcaption>
+</figure>
 
 <!--
 

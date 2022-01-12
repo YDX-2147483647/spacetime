@@ -43,3 +43,12 @@ aside.remark {
     background-color: #f6ffec80;
     border-color: greenyellow;
 }
+
+figure > figcaption {
+    text-align: center;
+    font-family: cursive;
+}
+figure > .jxgbox {
+    display: flex;
+    margin: auto;
+}

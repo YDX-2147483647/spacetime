@@ -26,7 +26,7 @@ layout: default
 
 <aside class='remark'><p>不同的是，这里<strong>完全不会</strong>排斥公式，而且会找一些例题做。</p></aside>
 
-感谢（不一定愿意透露姓名的）□□□ 和 □□□。
+感谢（不一定愿意透露姓名的）□□□ 和 □□□，以及 [GitHub Pages](https://pages.github.com/)、[KaTeX](https://katex.org/)、[JSXGraph](https://jsxgraph.org/)。
 
 ---
 
