@@ -11,6 +11,9 @@ main li {
 main p {
     text-indent: 2em;
 }
+figcaption > p {
+    text-indent: 0;
+}
 
 blockquote footer {
     text-align: right;
@@ -36,19 +39,26 @@ strong {
 aside {
     border-left: solid 0.3rem;
     padding: 0 1rem;
-
     color: #819198;
-}
-aside.remark {
-    background-color: #f6ffec80;
-    border-color: greenyellow;
+
+    &.remark {
+        background-color: #f6ffec80;
+        border-color: greenyellow;
+
+        &::before {
+            content: "ⓘ";
+        }
+    }
 }
 
-figure > figcaption {
-    text-align: center;
-    font-family: cursive;
-}
-figure > .jxgbox {
-    display: flex;
-    margin: auto;
+figure {
+    & > figcaption {
+        text-align: center;
+        font-family: cursive;
+    }
+    & > .jxgbox,
+    & > img {
+        display: flex;
+        margin: auto;
+    }
 }

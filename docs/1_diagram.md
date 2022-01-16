@@ -3,7 +3,9 @@ title: 1 时空图
 description: 先不急着进入相对论。
 math: true
 graph:
-    - assets/graph/1_diagram-1.js
+    - 1_diagram-1
+style:
+    - 1_diagram
 ---
 
 # 1 时空图
@@ -27,12 +29,42 @@ graph:
     <p>与中学的习惯不同，这里的时间轴一般作纵轴，所以也许叫“$t$-$x$图”更好。不过这都无所谓，就叫时空图（spacetime diagram）吧。</p>
 </aside>
 
-类似地，质点的运动在“\\( Oxt\\) 平面”内用线表示。
+类似地，质点的运动在“\\( Oxt\\) 平面”内用线表示，称作**世界线**。
+
+<aside class='remark'>
+    <p>世界线并不是物体的轨迹，它沿时间轴的投影才是。</p>
+</aside>
 
 <figure>
     <div id='graph-1' class='jxgbox' style='height: 20em; width: 20em;'></div>
-    <figcaption>闰土·鸟雀·竹匾</figcaption>
+    <figcaption>时空图：闰土·鸟雀·竹匾</figcaption>
 </figure>
+
+稍微思考一下，我们至少能从时空图中读出以下信息：
+
+-   任意时刻物体的位置。
+-   两个事件是否同时或同地，以及**时间间隔**（时间差）、**空间间隔**（距离）。
+-   物体运动是否相对参照系静止，以及速度。
+
+[刚才那个时空图](#graph-1)中的空间只有一维；二维空间的时空图类似一沓<sub>儿</sub>照片摞在一起；实际上狭义相对论的背景空间是 \\((\vec x, t)\\) 所在的 \\(\R^4\\)，或者写成 \\( \R^{3+1} \\)。
+
+<aside class='remark'>
+    <p>我们后面主要考虑第一个——毕竟屏幕只有二维，但我们大脑里要有最后一个。</p>
+</aside>
+
+<figure>
+    <div id='fig-bomb'>
+        <img src="assets/image/bomb_1.jpg" alt="0.06 sec">
+        <img src="assets/image/bomb_2.jpg" alt="0.016 sec">
+        <img src="assets/image/bomb_3.jpg" alt="0.053 sec">
+        <img src="assets/image/bomb_4.jpg" alt="1.100 sec">
+    </div>
+<figcaption markdown='1'>
+原子弹爆炸[^dimensional]的时空图，某种“锥”（向上代表时间流逝，向纵深、左右和一个照片无法体现的方向代表空间延伸，领会精神:-）
+</figcaption>
+</figure>
+
+[^dimensional]: 图片取自<cite markdown='1'>[Estimate of the energy released in the first Atomic Bomb explosion](https://www.atmosp.physics.utoronto.ca/people/codoban/PHY138/Mechanics/dimensional.pdf)</cite>。这是个“抄本”，它指出原文在[一个已经坏掉的链接](http://www.pa.uky.edu/~sps/Month1.htm)。
 
 <!--
 
