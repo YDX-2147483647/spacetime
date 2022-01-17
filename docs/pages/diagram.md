@@ -1,11 +1,13 @@
 ---
 title: 1 时空图
 description: 先不急着进入相对论。
+permalink: /:basename/
+
 math: true
 graph:
-    - 1_diagram-1
+    - diagram-1
 style:
-    - 1_diagram
+    - diagram
 ---
 
 # 1 时空图
@@ -54,10 +56,10 @@ style:
 
 <figure>
     <div id='fig-bomb'>
-        <img src="assets/image/bomb_1.jpg" alt="0.06 sec">
-        <img src="assets/image/bomb_2.jpg" alt="0.016 sec">
-        <img src="assets/image/bomb_3.jpg" alt="0.053 sec">
-        <img src="assets/image/bomb_4.jpg" alt="1.100 sec">
+        <img src="{{ '/assets/image/bomb_1.jpg' | relative_url }}" alt="0.06 sec">
+        <img src="{{ '/assets/image/bomb_2.jpg' | relative_url }}" alt="0.016 sec">
+        <img src="{{ '/assets/image/bomb_3.jpg' | relative_url }}" alt="0.053 sec">
+        <img src="{{ '/assets/image/bomb_4.jpg' | relative_url }}" alt="1.100 sec">
     </div>
 <figcaption markdown='1'>
 原子弹爆炸[^dimensional]的时空图，某种“锥”（向上代表时间流逝，向纵深、左右和一个照片无法体现的方向代表空间延伸，领会精神:-）

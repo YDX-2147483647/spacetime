@@ -1,7 +1,7 @@
 {% if page.style %}
     <!-- Custom Style -->
     {% for css in page.style %}
-        <link rel="stylesheet" href='assets/css/{{ css }}.css'>
+        <link rel="stylesheet" href="{{ '/assets/css' | relative_url }}/{{ css }}.css">
     {% endfor %}
 {% endif %}
 
@@ -10,7 +10,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css">
     {% for js in page.graph %}
-        <script defer src='assets/graph/{{ js }}.js'></script>
+        <script defer src="{{ '/assets/graph' | relative_url }}/{{ js }}.js"></script>
     {% endfor %}
     {% comment %}
         如果想在 JSXGraph 中使用 KaTeX，则 KaTeX 需在 JSXGraph 之后。

@@ -8,7 +8,7 @@ layout: default
 
 目前的计划：
 
-1. [时空图](./1_diagram)
+1. [时空图]({{ '/diagram/' | relative_url }})
 2. 光速有限
 3. 洛伦兹变换
 4. 一些相对论效应
@@ -24,7 +24,9 @@ layout: default
 >
 > <footer>——<a href='https://www.bilibili.com/video/BV1wW411X7hL'>分钟物理</a>（<a href='https://www.youtube.com/watch?v=1rLWVZVWfdY&list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm'>YouTube</a>）</footer>
 
-<aside class='remark'><p>不同的是，这里<strong>完全不会</strong>排斥公式，而且会找一些例题做。</p></aside>
+<aside class='remark' markdown='1'>
+不同的是，这里**完全不会**排斥公式，而且会找一些例题做。
+</aside>
 
 感谢（不一定愿意透露姓名的）□□□ 和 □□□，以及 [GitHub Pages](https://pages.github.com/)、[KaTeX](https://katex.org/)、[JSXGraph](https://jsxgraph.org/)。
 

@@ -2,14 +2,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Server",
-            "detail": "jekyll server",
+            "label": "Serve",
+            "detail": "jekyll serve",
             "type": "shell",
             "command": "bundler",
             "args": [
                 "exec",
                 "jekyll",
-                "server",
+                "serve",
                 "--incremental"
             ],
             "options": {
