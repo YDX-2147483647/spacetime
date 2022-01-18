@@ -1,5 +1,10 @@
+{% if layout.style %}
+    <!-- Layout Style -->
+    <link rel="stylesheet" href="{{ '/assets/css' | relative_url }}/{{ layout.style }}.css">
+{% endif %}
+
 {% if page.style %}
-    <!-- Custom Style -->
+    <!-- Page Style -->
     {% for css in page.style %}
         <link rel="stylesheet" href="{{ '/assets/css' | relative_url }}/{{ css }}.css">
     {% endfor %}

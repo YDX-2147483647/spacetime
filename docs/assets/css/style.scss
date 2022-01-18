@@ -11,9 +11,6 @@ main li {
 main p {
     text-indent: 2em;
 }
-figcaption > p {
-    text-indent: 0;
-}
 
 blockquote footer {
     text-align: right;
@@ -31,10 +28,6 @@ em {
     font-family: cursive;
     font-style: normal;
 }
-strong {
-    text-decoration: underline;
-    color: #016834;
-}
 
 aside {
     border-left: solid 0.3rem;
@@ -48,19 +41,5 @@ aside {
         &::before {
             content: "ⓘ";
         }
-    }
-}
-
-figure {
-    margin: 1em auto;
-
-    & > figcaption {
-        text-align: center;
-        font-family: cursive;
-    }
-    & > .jxgbox,
-    & > img {
-        display: flex;
-        margin: auto;
     }
 }

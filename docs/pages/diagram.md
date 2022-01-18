@@ -1,7 +1,10 @@
 ---
-title: 1 时空图
+order: 1
+title: 时空图
 description: 先不急着进入相对论。
+
 permalink: /:basename/
+layout: pages
 
 math: true
 graph:
@@ -9,8 +12,6 @@ graph:
 style:
     - diagram
 ---
-
-# 1 时空图
 
 ## 事件
 
