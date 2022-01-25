@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
     {% include head-custom.html %}
   </head>
-  <body>
+  <!-- `ontouchmove` to fix `:hover` CSS on Mobile Safari.  -->
+  <body ontouchmove>
     <a id="skip-to-content" href="#content">跳至正文</a>
 
     <header class="page-header" role="banner">

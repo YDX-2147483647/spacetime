@@ -7,5 +7,20 @@
 			"\t<p>$0</p>",
 			"</aside>"
 		]
+	},
+	"JSXGraph": {
+		"scope": "markdown",
+		"prefix": ".jxg",
+		"body": [
+			"<figure>",
+			"\t<div id='graph-$1' class='jxgbox' style='height: 20em; width: 20em;'></div>",
+			"\t<figcaption>$0</figcaption>",
+			"</figure>"
+		]
+	},
+	"黑幕":{
+		"scope": "markdown",
+		"prefix": ".shady",
+		"body": "<span class='shady'>$1<\/span>"
 	}
 }

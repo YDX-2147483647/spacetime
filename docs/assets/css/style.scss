@@ -8,8 +8,12 @@ main li {
     font-family: serif;
 }
 
-main p {
-    text-indent: 2em;
+main,
+aside,
+figure {
+    & > p {
+        text-indent: 2em;
+    }
 }
 
 blockquote footer {
@@ -41,5 +45,11 @@ aside {
         &::before {
             content: "ⓘ";
         }
+    }
+}
+
+.katex-html {
+    .cjk_fallback {
+        font-size: smaller;
     }
 }

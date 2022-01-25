@@ -17,14 +17,11 @@ nav {
         padding: 0.5em 1em;
     }
 
-    .step {
-        text-indent: 0;
-
-        a {
-            transition: box-shadow 0.2s;
-            &:hover {
-                box-shadow: none;
-            }
+    .step a {
+        transition: box-shadow 0.2s;
+        &:hover,
+        &:focus {
+            box-shadow: none;
         }
     }
 
@@ -37,10 +34,11 @@ nav {
         }
 
         li > a {
-            border-radius: .5em;
-            padding: .2em 1em;
+            border-radius: 0.5em;
+            padding: 0.2em 1em;
             transition: box-shadow 0.2s;
-            &:hover {
+            &:hover,
+            &:focus {
                 box-shadow: 0.2em 0.2em 0.5em #159957;
             }
         }
@@ -51,12 +49,16 @@ strong {
     text-decoration: underline;
     color: #016834;
 }
+del {
+    color: gray;
+    text-decoration-color: black;
+}
 
 figure {
     margin: 1em auto;
 
-    & > figcaption {
-        text-indent: 0;
+    & > figcaption,
+    & > figcaption > p {
         text-align: center;
         font-family: cursive;
     }
@@ -64,5 +66,33 @@ figure {
     & > img {
         display: flex;
         margin: auto;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    &:hover {
+        a {
+            opacity: 1;
+        }
+    }
+
+    a {
+        transition: opacity 0.2s;
+        opacity: 0;
+        font-size: smaller;
+    }
+}
+
+.shady {
+    transition: 0.2s;
+    filter: blur(0.2em);
+
+    &:hover {
+        filter: none;
     }
 }

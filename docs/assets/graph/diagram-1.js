@@ -1,27 +1,9 @@
-const board = JXG.JSXGraph.initBoard('graph-1', {
-    showCopyright: false,
+import { initBoard, create_point } from "./common.js"
+
+
+
+const board = initBoard('graph-1', {
     boundingbox: [-4, 3, 4, -2],
-    axis: true,
-    defaultAxes: {
-        x: {
-            name: String.raw`\(x\)`,
-            withLabel: true,
-            ticks: {
-                visible: false,
-            },
-        },
-        y: {
-            name: String.raw`\(t\)`,
-            withLabel: true,
-            label: {
-                position: 'rt',
-                offset: [-20, -10]
-            },
-            ticks: {
-                visible: false,
-            },
-        }
-    }
 })
 
 
@@ -30,11 +12,7 @@ const points = [
     { name: '将绳子一拉', position: [2, 1] },
     { name: '鸟雀就罩在竹匾下', position: [-2, 1.5] },
 ].map(({ name, position }) =>
-    board.create('point', position, {
-        name,
-        face: '+',
-        fixed: true,
-    })
+    create_point(board, position, { name })
 )
 
 const tray = board.create('line',
