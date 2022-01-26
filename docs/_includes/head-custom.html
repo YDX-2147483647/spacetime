@@ -1,3 +1,13 @@
+<script>
+    // `ontouchmove` to fix `:hover` CSS on Mobile Safari.
+    document.addEventListener('load',()=>{
+        document.body.addEventListener('touchmove', () => { }, { passive: true })
+    })
+</script>
+
+<!-- Analytics -->
+<script data-host="https://microanalytics.io" data-dnt="false" src="https://microanalytics.io/js/script.js" id="ZwSg9rf6GA" async defer></script>
+
 {% if layout.style %}
     <!-- Layout Style -->
     <link rel="stylesheet" href="{{ '/assets/css' | relative_url }}/{{ layout.style }}.css">
@@ -25,6 +35,10 @@
 
 {% if page.math %}
     <!-- KaTeX -->
+    {% comment %}
+        注意，Markdown 编译时有可能把“$$”转换为“\[”“\]”
+        并且“\[”“\]”可能不会被识别成公式，于是误被转义。
+    {% endcomment %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
     <script type="module">
@@ -32,8 +46,6 @@
 
         renderMathInElement(document.body, {
             delimiters: [
-                // 注意，Markdown 编译时有可能把“$$”转换为“\[”“\]”
-                // 并且“\[”“\]”可能不会被识别成公式，于是误被转义。
                 { left: '\\(', right: '\\)', display: false },
                 { left: '\\[', right: '\\]', display: true },
                 { left: '$$', right: '$$', display: true },
