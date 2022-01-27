@@ -45,6 +45,6 @@ export function create_point(board, position, options = {}) {
         fixed: true,
     }
 
-    board.create('point', position,
+    return board.create('point', position,
         Object.assign({}, defaults, options))
 }

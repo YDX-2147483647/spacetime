@@ -2,10 +2,14 @@
     "cSpell.words": [
         "bmatrix",
         "boundingbox",
+        "displaystyle",
         "endcapture",
         "endfor",
         "endunless",
         "forloop",
         "jxgbox"
-    ]
+    ],
+    "yaml.schemas": {
+        "https://json.schemastore.org/jekyll.json": "docs/_config.yml"
+    }
 }

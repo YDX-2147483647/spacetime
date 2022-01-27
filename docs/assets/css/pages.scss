@@ -67,6 +67,11 @@ figure {
         display: flex;
         margin: auto;
     }
+
+    & > .jxgbox {
+        height: 20em;
+        max-width: 20em;
+    }
 }
 
 h1,
