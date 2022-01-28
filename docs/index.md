@@ -9,7 +9,7 @@ layout: default
 目前的计划：
 
 <ol>
-    {% assign pages = site.pages | where_exp: "page", "page.order != nil" | sort: "order" %}
+    {% assign pages = site.docs | sort: "order" %}
     {% for p in pages %}
         <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
     {% endfor %}

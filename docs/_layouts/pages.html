@@ -8,7 +8,7 @@ style: pages
 {% include anchor_headings.html html=content anchorAttrs='aria-label="“%heading%”的永久链接"' anchorBody="⚓" %}
 
 <!-- Inspired by jekyll/jekyll/docs/_includes/step-index.html. -->
-{% assign pages = site.pages | where_exp: "page", "page.order != nil" | sort: "order" %}
+{% assign pages = site.docs | sort: "order" %}
 <nav>
     <p class='step'>
         {% for p in pages %}

@@ -15,3 +15,15 @@ plugins:
 
 github:
   is_project_page: false
+
+collections:
+  docs:
+    output: true
+    permalink: /:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "docs"
+    values:
+      layout: pages
