@@ -42,3 +42,8 @@
         transform: translateZ(calc(4 * var(--step) + var(--shift)));
     }
 }
+
+#graph-4 + p {
+    text-align: center;
+    text-indent: 0;
+}

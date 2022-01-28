@@ -3,17 +3,57 @@
 
 @import "{{ site.theme }}";
 
+// 排版
+
+aside,
+details {
+    border-left: solid 0.3rem;
+    padding: 0 1rem;
+    color: #819198;
+
+    margin: 1em 0;
+}
+
+aside {
+    &.remark {
+        background-color: #f6ffec80;
+        border-color: greenyellow;
+
+        &::before {
+            content: "ⓘ";
+        }
+    }
+}
+
+details {
+    background-color: #eeeeee80;
+    border-color: #819198;
+
+    & > summary:first-of-type {
+        // fix #page-themes/cayman#147
+        display: list-item;
+    }
+
+    summary + p {
+        margin-top: 0;
+    }
+}
+
+.footnotes {
+    margin-top: 2em;
+    border-top: 0.1em solid lightgray;
+    padding-top: 0.5em;
+}
+
+// 样式
+
 main p,
 main li {
     font-family: serif;
 }
 
-main,
-aside,
-figure {
-    & > p {
-        text-indent: 2em;
-    }
+:where(main, aside, figure, details, blockquote) > p {
+    text-indent: 2em;
 }
 
 blockquote footer {
@@ -33,29 +73,8 @@ em {
     font-style: normal;
 }
 
-aside {
-    border-left: solid 0.3rem;
-    padding: 0 1rem;
-    color: #819198;
-
-    &.remark {
-        background-color: #f6ffec80;
-        border-color: greenyellow;
-
-        &::before {
-            content: "ⓘ";
-        }
-    }
-}
-
 .katex-html {
     .cjk_fallback {
         font-size: smaller;
     }
-}
-
-.footnotes {
-    margin-top: 2em;
-    border-top: 0.1em solid lightgray;
-    padding-top: 0.5em;
 }

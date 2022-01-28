@@ -10,6 +10,8 @@ math: true
 graph:
     - diagram-1
     - diagram-2
+    - diagram-3
+    - diagram-4
 style:
     - diagram
 ---
@@ -107,8 +109,8 @@ style:
 
 ### 计算
 
-<aside class='remark'>
-    <p>此节虽长，但不重要——很多内容不相关。</p>
+<aside class='remark' markdown='1'>
+此节虽长，但不重要——很多内容不相关。（[传送门](#一些讨论)）
 </aside>
 
 分别记张三（和冰车）、李四（的冰车）、冰盘作 \\(3,4,0\\)；<!-- 用“推-碰”表示“推出”至“碰撞”，“-收”表示“回收”前瞬间，以此类推； -->分别记初态（initial）、末态（final）作 $i,f$，具体所指视语境。
@@ -161,9 +163,47 @@ $$
 
 ### 一些讨论
 
-动量守恒可反映为质心速度不变。
+在这个问题中，动量守恒等价于质心速度不变（用线段长给定质量比，则质心位置可用尺规作出）。在“碰撞”附近，能量（总动能）守恒（在动量守恒的基础上）等价于“下图中的四边形是平行四边形”。
 
+<figure>
+    <div id='graph-3' class='jxgbox'></div>
+    <figcaption>从图判断能量（总动能）是否守恒（\( m_A : m_B = 2:1 \)）</figcaption>
+</figure>
 
+<aside class='remark'>
+    <p>上图中圆点可拖动。</p>
+</aside>
+
+<details markdown='1'>
+<summary>作图步骤</summary>
+
+1. 垂直于 \\(t\\) 轴随意作一直线，分别交两条世界线于两点。
+2. 以碰撞点为中心，作上述直线的对称直线，又与两条世界线交出两点。
+3. 连接这四点。
+</details>
+
+<details markdown='1'>
+<summary>原因</summary>
+
+作图其实是选取了三个时刻（垂直于 \\(t\\) 轴的直线上的每个事件同时发生）：碰撞前、碰撞、碰撞后。这三个时刻等距，划分出两段等长时间（碰撞前~碰撞，碰撞~碰撞后），从而位移正比于速度。
+
+以 A（橙色）为例，这条世界线交出的两点的 \\(x\\) 坐标差正比于（两段时间的）速度的和，即 \\( v_i + v_f \\)。
+
+而前面已经说明，无论是哪一方，都有 \\( v_i + v_f = 2 v_c \\)，其中 \\(v_c\\) 是质心速度。因此双方的 \\( v_i + v_f \\) 一样，所以这组对边平行。（另一组自不必说）
+
+另：也可从“相对速度反向”理解。
+</details>
+
+运用这些性质，可用尺规补全下图，还能求出张三、冰盘、李四的质量比（用线段长之比表示）。
+
+<figure>
+    <div id='graph-4' class='jxgbox'></div>
+    <p>
+        <input type="checkbox" id="graph-4-toggle" name="graph-4-toggle">
+        <label for="graph-4-toggle">是否显示构造</label>
+    </p>
+    <figcaption>冰盘碰冰车（<span class='shady'>被用白色墨水弄脏的</span>残图）</figcaption>
+</figure>
 
 <!--
 

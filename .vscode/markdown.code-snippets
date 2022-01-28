@@ -13,7 +13,7 @@
 		"prefix": ".jxg",
 		"body": [
 			"<figure>",
-			"\t<div id='graph-$1' class='jxgbox' style='height: 20em; width: 20em;'></div>",
+			"\t<div id='graph-$1' class='jxgbox'></div>",
 			"\t<figcaption>$0</figcaption>",
 			"</figure>"
 		]
