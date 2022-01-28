@@ -26,4 +26,4 @@ defaults:
       path: ""
       type: "docs"
     values:
-      layout: pages
+      layout: docs
