@@ -198,6 +198,8 @@ $$
     <p>
         <input type="checkbox" id="graph-4-toggle" name="graph-4-toggle">
         <label for="graph-4-toggle">是否显示构造</label>
+        <br>
+        <span>点线连接而成，虚线平行而得。张三、冰盘、李四的质量比为 \(2:1:3\)。</span>
     </p>
     <figcaption>冰盘碰冰车（<span class='shady'>被用白色墨水弄脏的</span>残图）</figcaption>
 </figure>

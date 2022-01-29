@@ -1,4 +1,4 @@
-import { initBoard, create_point } from "./common.js"
+import { initBoard, create_point as _create_point } from "./common.js"
 
 
 
@@ -10,12 +10,15 @@ const board = initBoard('graph-4', {
 })
 
 
+
+/// 残图
+
 const points = [
     { name: '推出', position: [0, 0] },
     { name: '碰撞', position: [6.1 * .8, .8] },
     { name: '回收', position: [-.8, 1].map(u => u * (.8 + 184 / 175)) },
 ].map(({ name, position }) =>
-    create_point(board, position, { name })
+    _create_point(board, position, { name })
 )
 const x_s = points.map(p => p.X())
 const t_s = points.map(p => p.Y())
@@ -70,24 +73,109 @@ const plate = board.create('curve', [
 
 
 
-const constructions = [
+/// 构造
+
+/** 开始时是否显示构造，只用于调试 */
+const initial_visible = false
+
+/**
+ * @param {String} type
+ * @param {Array} parents 
+ */
+function point(type, parents, options = {}) {
+    return board.create(type, parents,
+        Object.assign({}, {
+            face: '+',
+            fixed: true,
+            withLabel: false,
+            visible: initial_visible,
+        }, options))
+}
+/**
+ * @param {string} type 
+ * @param {Array} parents 
+ */
+function create(type, parents, options = {}) {
+    return board.create(type, parents,
+        Object.assign({}, {
+            strokeColor: 'gray',
+            fixed: true,
+            visible: initial_visible,
+        }, options))
+}
+
+
+const left_constructions = [
     {
         type: 'parallel',
         parents: [board.defaultAxes.x, points[1]],
         options: { dash: 2 }
+    }, {
+        type: 'line',
+        parents: [points[0], [1.5 * (t_s[1] - t_s[0]), t_s[1]]],
+        options: {
+            dash: 1,
+            straightFirst: false,
+            straightLast: false,
+        }
+    }, {
+        type: 'line',
+        parents: [[1.5 * (t_s[1] - t_s[0]), t_s[1]], points[2]],
+        options: {
+            dash: 1,
+            straightFirst: false,
+        }
     }
-].map(({ type, parents, options }) =>
-    board.create(type, parents,
-        Object.assign({}, {
-            strokeColor: '#fff0'
-        }, options))
-)
+].map(({ type, parents, options }) => create(type, parents, options))
+
+function construct_right() {
+    const clock = create('line',
+        [[0, 2 * t_s[1]], [1, 2 * t_s[1]]],
+        { dash: 2 }
+    )
+    const top_left_corner = point('intersection',
+        [clock, plate, 0])
+    const left_slope = create('line',
+        [points[0], top_left_corner], {
+        straightFirst: false,
+        straightLast: false,
+        dash: 1
+    })
+    const middle_slope = create('parallel',
+        [left_slope, points[1]],
+        { dash: 2 })
+    const bottom_right_corner = point('intersection',
+        [four, board.defaultAxes.x])
+    const right_slope = create('parallel',
+        [left_slope, bottom_right_corner],
+        { dash: 2 })
+    const top_right_corner = point('intersection',
+        [clock, right_slope])
+    const final = create('line',
+        [points[1], top_right_corner],
+        {
+            dash: 1,
+            straightFirst: false
+        })
+
+    return [
+        clock,
+        top_left_corner,
+        left_slope,
+        middle_slope,
+        bottom_right_corner,
+        right_slope,
+        top_right_corner,
+        final
+    ]
+}
+const right_constructions = construct_right()
 
 toggle.addEventListener('change', () => {
-    const color = toggle.checked ? 'gray' : '#fff0'
-    for (const line of constructions) {
-        line.setAttribute({
-            strokeColor: color
-        })
-    }
+    [
+        ...left_constructions,
+        ...right_constructions,
+    ].map(e => e.setAttribute({
+        visible: toggle.checked
+    }))
 })

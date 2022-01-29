@@ -43,7 +43,16 @@
     }
 }
 
-#graph-4 + p {
-    text-align: center;
-    text-indent: 0;
+#graph-4 {
+    & + p {
+        text-align: center;
+        text-indent: 0;
+
+        input ~ span {
+            transition: 0.2s;
+        }
+        input:not(:checked) ~ span {
+            opacity: 0;
+        }
+    }
 }
