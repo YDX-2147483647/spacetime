@@ -1,6 +1,6 @@
 <script>
     // `ontouchmove` to fix `:hover` CSS on Mobile Safari.
-    document.addEventListener('load',()=>{
+    window.addEventListener('load', () => {
         document.body.addEventListener('touchmove', () => { }, { passive: true })
     })
 </script>
