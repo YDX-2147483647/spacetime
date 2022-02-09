@@ -169,7 +169,7 @@ $$
 </figure>
 
 <aside class='remark'>
-    <p>上图中圆点可拖动。（除非你的设备同时不支持 [PointerEvent](https://caniuse.com/mdn-api_pointerevent) 和 [TouchEvent](https://caniuse.com/mdn-api_touchevent)，例如 Safari 12.x、QQ 浏览器 10.4）</p>
+    <p>上图中圆点可拖动。</p>
 </aside>
 
 <details markdown='1'>
