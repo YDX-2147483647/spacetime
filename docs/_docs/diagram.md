@@ -1,7 +1,8 @@
 ---
 order: 1
 title: 时空图
-description: 先不急着进入相对论。
+description: |-
+    不急着进入相对论。先明确模型，不然容易让自己一下子考虑太复杂的问题，事倍功半。
 
 math: true
 graph:
@@ -168,7 +169,7 @@ $$
 </figure>
 
 <aside class='remark'>
-    <p>上图中圆点可拖动。</p>
+    <p>上图中圆点可拖动。（除非你的设备同时不支持 [PointerEvent](https://caniuse.com/mdn-api_pointerevent) 和 [TouchEvent](https://caniuse.com/mdn-api_touchevent)，例如 Safari 12.x、QQ 浏览器 10.4）</p>
 </aside>
 
 <details markdown='1'>
@@ -177,7 +178,7 @@ $$
 1. 垂直于 \\(t\\) 轴随意作一直线，分别交两条世界线于两点。
 2. 以碰撞点为中心，作上述直线的对称直线，又与两条世界线交出两点。
 3. 连接这四点。
-</details>
+ </details>
 
 <details markdown='1'>
 <summary>原因</summary>
@@ -189,6 +190,7 @@ $$
 而前面已经说明，无论是哪一方，都有 \\( v_i + v_f = 2 v_c \\)，其中 \\(v_c\\) 是质心速度。因此双方的 \\( v_i + v_f \\) 一样，所以这组对边平行。（另一组自不必说）
 
 另：也可从“相对速度反向”理解。
+
 </details>
 
 运用这些性质，可用尺规补全下图，还能求出张三、冰盘、李四的质量比（用线段长之比表示）。
@@ -203,25 +205,3 @@ $$
     </p>
     <figcaption>冰盘碰冰车（<span class='shady'>被用白色墨水弄脏的</span>残图）</figcaption>
 </figure>
-
-<!--
-
-啊 $ c^2t^2 = x^2 + y^2 + z^2 \frac12 $。
-
-$$
-    \begin{bmatrix}
-        \gamma & -\gamma\beta & 1 & 0 \\
-        -\gamma\beta & \gamma & 0 & 0 \\
-        0 & 0 & 1 & 0 \\
-        0 & 0 & 0 & 1 \\
-    \end{bmatrix}
-$$
-
-<aside class='remark'>
-    <p>3Blue1Brown 借方块碰撞出现 \(\pi\) 介绍相图：<a href="https://www.bilibili.com/video/BV1nt411p7F9" target='_blank'>问题</a>、<a href="https://www.bilibili.com/video/BV1bt41147H5" target='_blank'>速度空间法</a>、<a href="https://www.bilibili.com/video/BV1Mb41187jL" target='_blank'>位置空间法</a>。</p>
-</aside>
-
-> 时间是什么？你不问我，我本来知道它是什么；你问我，我倒觉得茫然了。
-> <footer>——奥古斯丁（按照罗翔的说法）</footer>
-
--->
