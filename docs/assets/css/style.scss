@@ -47,6 +47,18 @@ details {
 
 // 样式
 
+@mixin italic-or-cursive {
+    &:lang(en),
+    :lang(en) {
+        font-style: italic;
+    }
+    &:not(:lang(en)),
+    :not(:lang(en)) {
+        font-family: cursive;
+        font-style: normal;
+    }
+}
+
 main p,
 main li {
     font-family: serif;
@@ -58,7 +70,7 @@ main li {
 
 blockquote footer {
     text-align: right;
-    font-family: cursive;
+    @include italic-or-cursive()
 }
 
 a[target="_blank"]::after {
@@ -69,8 +81,7 @@ a[target="_blank"]::after {
 }
 
 em {
-    font-family: cursive;
-    font-style: normal;
+    @include italic-or-cursive()
 }
 
 .katex-html {
