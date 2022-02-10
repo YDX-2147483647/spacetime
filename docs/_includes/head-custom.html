@@ -24,9 +24,8 @@
 
 {% if page.graph %}
     <!-- JSXGraph -->
-    <script defer src="{{ '/assets/library/jsxgraphcore.js' | relative_url }}"></script>
-    <!-- <script defer src="https://cdn.jsdelivr.net/npm/jsxgraph@1.4/distrib/jsxgraphcore.js"></script> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.4/distrib/jsxgraph.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.2/distrib/jsxgraphcore.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsxgraph@1.4.2/distrib/jsxgraph.css">
     {% for js in page.graph %}
         <script type='module' src="{{ '/assets/graph' | relative_url }}/{{ js }}.js"></script>
     {% endfor %}
