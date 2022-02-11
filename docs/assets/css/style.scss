@@ -47,12 +47,21 @@ details {
 
 // 样式
 
+@mixin italic-or-cursive-swallow {
+    &:lang(en) {
+        font-style: italic;
+    }
+    &:not(:lang(en)) {
+        font-family: cursive;
+        font-style: normal;
+    }
+}
 @mixin italic-or-cursive {
-    &:lang(en),
+    @include italic-or-cursive-swallow();
+
     :lang(en) {
         font-style: italic;
     }
-    &:not(:lang(en)),
     :not(:lang(en)) {
         font-family: cursive;
         font-style: normal;
@@ -96,7 +105,7 @@ figure {
     & > figcaption,
     & > figcaption > p {
         text-align: center;
-        @include italic-or-cursive();
+        @include italic-or-cursive-swallow();
     }
     & > .jxgbox,
     & > img {
