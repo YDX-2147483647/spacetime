@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css" integrity="sha384-MlJdn/WNKDGXveldHDdyRP1R4CTHr3FeuDNfhsLPYrq2t0UBkUdK2jyTnXPEK1NQ" crossorigin="anonymous">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js" integrity="sha384-VQ8d8WVFw0yHhCk5E8I86oOhv48xLpnDZx5T9GogA/Y84DcCKWXDmSDfn13bzFZY" crossorigin="anonymous"></script>
     <script type="module">
-        import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.mjs";
+        import renderMathInElement from "https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.mjs"
 
         renderMathInElement(document.body, {
             delimiters: [
@@ -56,7 +56,10 @@
             macros: {
                 // Jekyll's "smart quotes" feature
                 // → https://katex.org/docs/issues.html
-                "’": "'"
+                "’": "'",
+                "\\abs": String.raw`{\left\lvert #1 \right\rvert}`,
+                "\\dd": String.raw`\mathop{}\!\mathrm{d}`,
+                "\\dv": String.raw`{\frac{\dd{#1}}{\dd{#2}}}`,
             },
         })
     </script>

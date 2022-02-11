@@ -90,7 +90,7 @@ a[target="_blank"]::after {
 }
 
 em {
-    @include italic-or-cursive();
+    @include italic-or-cursive-swallow();
 }
 
 .katex-html {
