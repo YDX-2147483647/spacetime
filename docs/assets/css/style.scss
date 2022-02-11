@@ -113,18 +113,17 @@ figure {
 figure.xkcd > .alt-text {
     color: darkgray;
     opacity: 1;
-    
+
     &:not(.visible) {
         opacity: 0;
     }
-    &.hidden,
-    &.waiting {
+    &.hidden {
         visibility: hidden;
     }
 
-    transition-duration: 1s;
-
-    &.hidden {
-        transition-duration: 0s;
+    &:not(.hidden) {
+        // after `.visible`
+        transition-duration: 1s;
+        transition-delay: 2s;
     }
 }

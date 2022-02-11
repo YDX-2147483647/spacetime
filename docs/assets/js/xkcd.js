@@ -14,26 +14,22 @@ function toggle_alt_text(figure) {
 
     const is = (state) => alt_text.classList.contains(state)
     const set = (state) => {
-        alt_text.classList.remove('hidden', 'waiting', 'appearing', 'visible')
+        alt_text.classList.remove('hidden', 'appearing', 'visible')
         alt_text.classList.add(state)
     }
 
-    // hidden → waiting → appearing → visible
+    // hidden → appearing → visible
     // [→ hidden → …]
 
     if (is('hidden')) {
         // hidden → appearing
-        set('waiting')
+        set('appearing')
+        alt_text.addEventListener('transitionend',
+            () => set('visible'),
+            { once: true })
 
-        setTimeout(() => {
-            set('appearing')
-            alt_text.addEventListener('transitionend',
-                () => set('visible'),
-                { once: true })
-        }, 2000)
-
-    } else if (is('waiting') || is('appearing')) {
-        // waiting / appearing - Everything ready in “hidden”.
+    } else if (is('appearing')) {
+        // appearing - Everything ready in “hidden”.
 
     } else if (is('visible')) {
         // visible → hidden
