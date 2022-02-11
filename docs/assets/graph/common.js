@@ -2,6 +2,9 @@
  * JSXGraph 相关工具
  * @requires {JXG}
  */
+import merge from 'https://cdn.skypack.dev/lodash.merge'
+
+
 
 /**
  * Initialize a new board.
@@ -37,7 +40,7 @@ export function initBoard(box, options = {}) {
     }
 
     return JXG.JSXGraph.initBoard(box,
-        Object.assign({}, defaults, options))
+        merge(defaults, options))
 }
 
 /**
@@ -53,5 +56,5 @@ export function create_point(board, position, options = {}) {
     }
 
     return board.create('point', position,
-        Object.assign({}, defaults, options))
+        merge(defaults, options))
 }
