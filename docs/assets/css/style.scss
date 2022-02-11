@@ -70,7 +70,7 @@ main li {
 
 blockquote footer {
     text-align: right;
-    @include italic-or-cursive()
+    @include italic-or-cursive();
 }
 
 a[target="_blank"]::after {
@@ -81,11 +81,50 @@ a[target="_blank"]::after {
 }
 
 em {
-    @include italic-or-cursive()
+    @include italic-or-cursive();
 }
 
 .katex-html {
     .cjk_fallback {
         font-size: smaller;
+    }
+}
+
+figure {
+    margin: 1em auto;
+
+    & > figcaption,
+    & > figcaption > p {
+        text-align: center;
+        @include italic-or-cursive();
+    }
+    & > .jxgbox,
+    & > img {
+        display: flex;
+        margin: auto;
+    }
+
+    & > .jxgbox {
+        height: 20em;
+        max-width: 20em;
+    }
+}
+
+figure.xkcd > .alt-text {
+    color: darkgray;
+    opacity: 1;
+    
+    &:not(.visible) {
+        opacity: 0;
+    }
+    &.hidden,
+    &.waiting {
+        visibility: hidden;
+    }
+
+    transition-duration: 1s;
+
+    &.hidden {
+        transition-duration: 0s;
     }
 }

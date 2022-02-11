@@ -4,7 +4,7 @@
 
 ## Custom Variables in Front Matter
 
-如无说明，默认实现于`/_includes/head-custom.html`。
+如无说明，默认实现于`/_includes/head-custom.html`。（`/`代表仓库的`docs/`。）
 
 <table>
     <thead>
@@ -63,8 +63,20 @@
                 <p>最终只会引入<code>*.css</code>。若源文件是<code>*.scss</code>，在开头添加 front matter 才会被 Jekyll 转换。</p>
             </td>
         </tr>
+        <tr>
+            <td>
+                <p><code>page.xkcd</code></p>
+            </td>
+            <td>
+                <p>支持 <a href='https://xkcd.com/'>xkcd</a> 的“alt-text”，<code>Boolean?</code>。</p>
+                <p>默认关闭。</p>
+                <p>实现于<code>/assets/js/xkcd.js</code>。</p>
+            </td>
+        </tr>
     </tbody>
 </table>
+
+另请参见`.vscode/markdown.code-snippets`。
 
 ## 注意事项
 

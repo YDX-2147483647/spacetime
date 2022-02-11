@@ -1,10 +1,18 @@
 ---
 layout: default
+
+xkcd: true
 ---
 
 # 时空图
 
 试图用时空图和简单几何处理一些狭义相对论运动学问题。
+
+<figure class='xkcd'>
+    <img src="{{ '/assets/image/quantum.png' | relative_url }}" alt='Quantum' srcset="{{ '/assets/image/quantum.png' | relative_url }}, {{ '/assets/image/quantum_2x.png' | relative_url }} 2x">
+    <figcaption lang='en'><a href='https://xkcd.com/1861/'>Quantum</a> —— xkcd</figcaption>
+    <p class='alt-text hidden' lang='en'>If you draw a diagonal line from lower left to upper right, that's the ICP 'Miracles' axis.</p>
+</figure>
 
 目前的计划：
 
@@ -30,6 +38,12 @@ layout: default
 </aside>
 
 感谢（不一定愿意透露姓名的）□□□ 和 □□□，以及 [GitHub Pages](https://pages.github.com/)、[KaTeX](https://katex.org/)、[JSXGraph](https://jsxgraph.org/)。
+
+其它有价值的网络资源：
+
+-   Helen Cook《[Relativistic Distortion](https://personal.math.ubc.ca/~cass/courses/m309-01a/cook/)》。
+-   北京鲁迅博物馆（北京新文化运动纪念馆）“[资料查询在线检索系统（鲁迅著作全编系统）](http://www.luxunmuseum.com.cn/cx/)”。
+-   [ScienceClic English](https://www.youtube.com/ScienceClicEN)《[A new way to visualize General Relativity](https://youtu.be/wrwgIjBUYVc)》；[Sooooft](https://space.bilibili.com/4158499) 译《[广义相对论可视化新方法](https://b23.tv/BV1uh411C7R8)》。
 
 ---
 

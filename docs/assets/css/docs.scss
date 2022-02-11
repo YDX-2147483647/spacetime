@@ -54,26 +54,6 @@ del {
     text-decoration-color: black;
 }
 
-figure {
-    margin: 1em auto;
-
-    & > figcaption,
-    & > figcaption > p {
-        text-align: center;
-        font-family: cursive;
-    }
-    & > .jxgbox,
-    & > img {
-        display: flex;
-        margin: auto;
-    }
-
-    & > .jxgbox {
-        height: 20em;
-        max-width: 20em;
-    }
-}
-
 h1,
 h2,
 h3,

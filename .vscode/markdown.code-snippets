@@ -18,9 +18,21 @@
 			"</figure>"
 		]
 	},
-	"黑幕":{
+	"黑幕": {
 		"scope": "markdown",
 		"prefix": ".shady",
 		"body": "<span class='shady'>$1<\/span>"
+	},
+	"xkcd": {
+		"scope": "markdown",
+		"prefix": ".xkcd",
+		"body": [
+			"<figure class='xkcd'>",
+			"\t<img src=\"{{ '/assets/image/${filename}.png' | relative_url }}\" alt='${title}' srcset=\"{{ '/assets/image/${filename}.png' | relative_url }}, {{ '/assets/image/${filename}_2x.png' | relative_url }} 2x\">",
+			"\t<figcaption lang='en'><a href='https://xkcd.com/${id}/'>Quantum</a> —— xkcd</figcaption>",
+			"\t<p class='alt-text hidden' lang='en'>${alt_text}</p>",
+			"</figure>"
+		],
+		"description": "支持 xkcd 的“alt-text”"
 	}
 }
