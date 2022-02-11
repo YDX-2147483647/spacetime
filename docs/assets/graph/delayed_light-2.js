@@ -1,4 +1,5 @@
-import { initBoard, range } from './common.js'
+import { initBoard } from './common.js'
+import { range } from "./util.js"
 
 const constants = {
     v: 0.9,
