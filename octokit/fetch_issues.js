@@ -1,9 +1,6 @@
 import Cache from './cache.js'
-import { token, log } from "./util.js"
+import { token } from "./util.js"
 
-
-const start_time = begin_time
-log(`${(Date.now() - start_time) / 1000} s. Start!`)
 
 /**
  * @param  {String[]} tags 
@@ -75,8 +72,6 @@ async function main() {
         auth: await token(),
         etag: cache.get('etag'),
     })
-
-    log(`${(Date.now() - start_time) / 1000} s. Fetched.`)
 }
 
 main()

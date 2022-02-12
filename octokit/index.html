@@ -6,22 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>测试 Octokit.js</title>
 
-    <script>
-        var begin_time = Date.now()
-
-        function log(message) {
-            console.log(message)
-
-            const out_el = document.querySelector('#out')
-            const li = document.createElement('li')
-            li.textContent = JSON.stringify(message, null, 2)
-            out_el.appendChild(li)
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            log(`${(Date.now() - begin_time) / 1000} s. DOMContentLoaded`)
-        })
-    </script>
     <script type='module' src='./fetch_issues.js'></script>
 </head>
 
