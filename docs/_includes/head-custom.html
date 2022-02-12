@@ -14,6 +14,10 @@
     <!-- Layout Style -->
     <link rel="stylesheet" href="{{ '/assets/css' | relative_url }}/{{ layout.style }}.css">
 {% endif %}
+{% if layout.script %}
+    <!-- Layout Scripts -->
+    <script type='module' src="{{ '/assets/js' | relative_url }}/{{ layout.script }}.js"></script>
+{% endif %}
 
 {% if page.style %}
     <!-- Page Style -->

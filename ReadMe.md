@@ -16,6 +16,16 @@
     <tbody>
         <tr>
             <td>
+                <p><code>layout.script</code></p>
+            </td>
+            <td>
+                <p>添加脚本，<code>String?</code>。</p>
+                <p><code>/assets/js/</code>中 JavaScript 文件的文件名（不含扩展名）。</p>
+                <p>使用<code>type='module'</code>引入。</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
                 <p><code>layout.style</code></p>
             </td>
             <td>
