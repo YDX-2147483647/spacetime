@@ -1,7 +1,3 @@
-import { Octokit } from "https://cdn.skypack.dev/@octokit/core"
-import { restEndpointMethods } from "https://cdn.skypack.dev/@octokit/plugin-rest-endpoint-methods"
-
-
 import Cache from './cache.js'
 import { token, log } from "./util.js"
 
@@ -17,46 +13,67 @@ function weak_match_etag(...tags) {
     return ignored.every(t => t === ignored[0])
 }
 
+
+
 const cache = new Cache(window.localStorage, 'issues')
 
-const RestOctokit = Octokit.plugin(restEndpointMethods)
-const octokit = new RestOctokit({
-    auth: await token()
-})
-octokit.hook.after('request', async (response, options) => {
-    const { headers: { etag }, data } = response
-    if (etag !== undefined) {
-        cache.set('etag', etag)
-            .set('data', data)
-    }
-})
-octokit.hook.error("request", async (error, options) => {
-    if (error.status === 304) { // Not Modified
-        const { headers: { etag } } = error.response
-        if (weak_match_etag(etag, cache.get('etag'))) {
-            error.response.data = cache.get('data')
-            return error.response
+/**
+ * @typedef {Object} Issue
+ */
+
+/**
+ * @see `octokit.rest.issues.listForRepo`
+ * @param {Object} param0 
+ * @param {String} param0.owner
+ * @param {String} param0.repo
+ * @param {String} param0.auth token
+ * @param {String?} param0.etag ETag (Entity Tag)
+ * @returns {Promise<{ etag: String, data: Issue[]}>}
+ */
+async function list_issues_for_repo({ owner, repo, auth, etag = null }) {
+    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/issues`, {
+        method: 'GET',
+        headers: {
+            ...(etag ? { 'If-None-Match': etag } : {}),
+            'Authorization': `token  ${auth}`,
+        },
+    })
+
+    const received_etag = response.headers.get('ETag')
+
+    if (response.status === 304) { // Not Modified
+        if (weak_match_etag(cache.get('etag'), etag, received_etag)) {
+            return {
+                etag: received_etag,
+                data: cache.get('data')
+            }
         } else {
             throw new Error([
                 'Got 304 (Not Modified), but the etag cannot match.',
-                `Received: ${etag}`,
-                `Cached: ${cache.get('etag')}`
+                `Cached: ${cache.get('etag')}`,
+                `Sent: ${etag}`,
+                `Received: ${received_etag}`,
             ].join('\n'))
         }
-    }
+    } else {
+        const data = await response.json()
 
-    throw error
-})
+        cache.set('etag', received_etag)
+            .set('data', data)
+        return {
+            etag: received_etag,
+            data
+        }
+    }
+}
 
 async function main() {
-    log(`${(Date.now() - start_time) / 1000} s. Begin main.`)
-
-    const { data } = await octokit.rest.issues.listForRepo({
+    const { data } = await list_issues_for_repo({
         owner: 'YDX-2147483647',
-        repo: 'spacetime',
-        headers: {
-            'If-None-Match': cache.get('etag'),
-        }
+        // repo: 'spacetime',
+        repo: 'bulletin-issues-transferred',
+        auth: await token(),
+        etag: cache.get('etag'),
     })
 
     log(`${(Date.now() - start_time) / 1000} s. Fetched.`)
