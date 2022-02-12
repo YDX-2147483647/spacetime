@@ -1,34 +1,15 @@
+import { token } from "./debug.js"
+
 import Cache from './cache.js'
-import { token } from "./util.js"
-
-
-/**
- * @param  {String[]} tags 
- */
-function weak_match_etag(...tags) {
-    const ignored = tags.map(t => t.startsWith('W/') ? t.slice(2) : t)
-    return ignored.every(t => t === ignored[0])
-}
+import { weak_match_etag, mentioned, render_as_element } from './util.js'
 
 
 
 const cache = new Cache(window.localStorage, 'issues')
 
-/** Issue
- * @typedef {Object} Issue
- * @property {String} url
- * @property {String} html_url
- * @property {Number} number
- * @property {String} state
- * @property {String} title
- * @property {String} body
- * @property {String} created_at
- * @property {String} updated_at
- * @see https://docs.github.com/en/rest/reference/issues
- */
-
 /**
- * Light version of `octokit.rest.issues.listForRepo` with mono-cache
+ * Light version of `octokit.rest.issues.listForRepo` with mono-cache.
+ * 缓存为 {@link cache}。
  * @see https://docs.github.com/en/rest/reference/issues#list-repository-issues--parameters
  * @param {Object} param0 
  * @param {String} param0.owner
@@ -48,7 +29,7 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
         method: 'GET',
         headers: {
             ...(cached_etag ? { 'If-None-Match': cached_etag } : {}),
-            'Authorization': `token  ${auth}`,
+            'Authorization': `token ${auth}`,
             'Accept': 'application/vnd.github.v3+json',
         },
     })
@@ -80,15 +61,26 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
     }
 }
 
-export async function fetch_issues() {
-    const { data } = await list_issues_for_repo({
+export async function test() {
+    const { data: issues } = await list_issues_for_repo({
         owner: 'YDX-2147483647',
         // repo: 'spacetime',
         repo: 'bulletin-issues-transferred',
         auth: await token(),
         query: {
             'state': 'open',
+            'sort': 'updated',
+            'direction': 'desc',
         },
     })
-    return data
+
+    const relevant_issues = issues
+        .filter(issue => mentioned(issue, ['进度']))
+
+    for (const i of relevant_issues) {
+        const li = document.createElement('li')
+        li.append(render_as_element(i))
+        document.querySelector('#out')
+            .append(li)
+    }
 }
