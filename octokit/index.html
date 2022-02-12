@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>测试 Octokit.js</title>
 
-    <script type='module' src='./fetch_issues.js'></script>
+    <script type='module'>
+        import { fetch_issues } from './fetch_issues.js'
+        fetch_issues().then(console.log)
+    </script>
 </head>
 
 <body>
