@@ -2,8 +2,20 @@ import Cache from './cache.js'
 import { weak_match_etag, mentioned, render_as_element } from './util.js'
 
 
+/**
+ * Keys: etag, issues, last_updated_on (ISO 8601 format).
+ */
+const cache = new Cache(window.localStorage, 'check-issues')
 
-const cache = new Cache(window.localStorage, 'issues')
+function is_too_frequent({ min_update_interval }) {
+    if (!cache.has('last_updated_on')) {
+        return false
+    }
+
+    const last_updated_on = new Date(cache.get('last_updated_on'))
+    const now = new Date()
+    return now - last_updated_on > min_update_interval
+}
 
 /**
  * Light version of `octokit.rest.issues.listForRepo` with mono-cache.
@@ -14,9 +26,19 @@ const cache = new Cache(window.localStorage, 'issues')
  * @param {String} param0.repo
  * @param {String?} param0.auth token
  * @param {Object?} param0.query parameters in query
- * @returns {Promise<{ etag: String, data: Issue[]}>}
+ * @param {Object} param1
+ * @param {Number?} param1.min_update_interval in minutes.
+ * @returns {Promise<{ etag: String, issues: Issue[]}>}
  */
-async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
+async function list_issues_for_repo({ owner, repo, auth, query = {} },
+    { min_update_interval = 60 } = {}) {
+    if (is_too_frequent({ min_update_interval })) {
+        return {
+            etag: cache.get('etag'),
+            issues: cache.get('issues')
+        }
+    }
+
     const url = new URL(`https://api.github.com/repos/${owner}/${repo}/issues`)
     url.search = (new URLSearchParams(query)).toString()
 
@@ -36,9 +58,10 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
 
     if (response.status === 304) { // Not Modified
         if (weak_match_etag(cached_etag, received_etag)) {
+            cache.set('last_updated_on', (new Date).toISOString())
             return {
                 etag: received_etag,
-                data: cache.get('data')
+                issues: cache.get('issues')
             }
         } else {
             throw new Error([
@@ -48,19 +71,20 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
             ].join('\n'))
         }
     } else {
-        const data = await response.json()
+        const issues = await response.json()
 
         cache.set('etag', received_etag)
-            .set('data', data)
+            .set('issues', issues)
+            .set('last_updated_on', (new Date).toISOString())
         return {
             etag: received_etag,
-            data
+            issues
         }
     }
 }
 
-export async function test() {
-    const { data: issues } = await list_issues_for_repo({
+export default async function test() {
+    const { issues } = await list_issues_for_repo({
         owner: 'YDX-2147483647',
         // repo: 'spacetime',
         repo: 'bulletin-issues-transferred',

@@ -1,3 +1,3 @@
-import { test } from './check-issues/check_issues.js'
+import  check_issues  from './check-issues/check_issues.js'
 
-test()
+check_issues()
