@@ -1,5 +1,3 @@
-import { token } from "./debug.js"
-
 import Cache from './cache.js'
 import { weak_match_etag, mentioned, render_as_element } from './util.js'
 
@@ -14,7 +12,7 @@ const cache = new Cache(window.localStorage, 'issues')
  * @param {Object} param0 
  * @param {String} param0.owner
  * @param {String} param0.repo
- * @param {String} param0.auth token
+ * @param {String?} param0.auth token
  * @param {Object?} param0.query parameters in query
  * @returns {Promise<{ etag: String, data: Issue[]}>}
  */
@@ -29,7 +27,7 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} }) {
         method: 'GET',
         headers: {
             ...(cached_etag ? { 'If-None-Match': cached_etag } : {}),
-            'Authorization': `token ${auth}`,
+            ...(auth ? { 'Authorization': `token ${auth}` } : {}),
             'Accept': 'application/vnd.github.v3+json',
         },
     })
@@ -66,7 +64,6 @@ export async function test() {
         owner: 'YDX-2147483647',
         // repo: 'spacetime',
         repo: 'bulletin-issues-transferred',
-        auth: await token(),
         query: {
             'state': 'open',
             'sort': 'updated',
@@ -80,7 +77,7 @@ export async function test() {
     for (const i of relevant_issues) {
         const li = document.createElement('li')
         li.append(render_as_element(i))
-        document.querySelector('#out')
+        document.querySelector('#check-issues')
             .append(li)
     }
 }
