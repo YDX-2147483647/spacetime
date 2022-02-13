@@ -59,13 +59,46 @@ export function render_as_element(issue) {
 
 
 /**
+ * @see `/_includes/check_issues.html`
+ */
+export function import_from_container() {
+    /** @type {HTMLElement} */
+    const container = document.querySelector('.check-issues')
+    /** @type {HTMLElement} */
+    const status = container.querySelector(':scope > div > .status')
+    /** @type {HTMLElement} */
+    const welcome = container.querySelector(':scope > div > .welcome')
+
+    const data = {
+        source: {
+            repo: container.dataset['source.repo'],
+            folder: container.dataset['source.folder'],
+            filepath: container.dataset['source.filepath'],
+            url: 'To be calculated.',
+        },
+        min_update_interval: Number(
+            container.dataset.min_update_interval === ''
+                ? 30
+                : container.dataset.min_update_interval
+        ),
+        title: container.dataset.title,
+        basename: window.location.pathname.split('/').filter(i => Boolean(i)).at(-1),
+    }
+    data.source.url = `https://github.com/${data.source.repo}/blob/${data.source.folder}/${data.file}`
+
+    return {
+        elements: { container, status, welcome },
+        data
+    }
+}
+
+/**
  * @returns {String[]}
  */
 export function get_keywords() {
+    const { data: { title, basename } } = import_from_container()
     return [
-        // `page.title`
-        document.querySelector('meta[property="og:title"]').content,
-        // permalink
-        window.location.pathname.split('/').filter(i => Boolean(i)).at(-1),
+        title,
+        basename,
     ]
 }
