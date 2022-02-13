@@ -28,3 +28,9 @@ defaults:
       type: "docs"
     values:
       layout: docs
+
+check_issues:
+  source: 
+    repo: YDX-2147483647/spacetime
+    folder: main/docs
+  min_update_interval: 30

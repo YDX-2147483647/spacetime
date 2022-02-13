@@ -1,5 +1,5 @@
 import Cache from './cache.js'
-import { weak_match_etag, mentioned, render_as_element, get_keywords } from './util.js'
+import { weak_match_etag, mentioned, render_as_element, import_from_container, get_keywords } from './util.js'
 
 
 /**
@@ -22,15 +22,14 @@ function is_too_frequent({ min_update_interval }) {
  * 缓存为 {@link cache}。
  * @see https://docs.github.com/en/rest/reference/issues#list-repository-issues--parameters
  * @param {Object} param0 
- * @param {String} param0.owner
- * @param {String} param0.repo
+ * @param {String} param0.repo owner/repo
  * @param {String?} param0.auth token
  * @param {Object?} param0.query parameters in query
  * @param {Object} param1
  * @param {Number?} param1.min_update_interval in minutes.
  * @returns {Promise<{ etag: String, issues: Issue[]}>}
  */
-async function list_issues_for_repo({ owner, repo, auth, query = {} },
+async function list_issues_for_repo({ repo, auth, query = {} },
     { min_update_interval = 0 } = {}) {
     if (is_too_frequent({ min_update_interval })) {
         return {
@@ -39,7 +38,7 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} },
         }
     }
 
-    const url = new URL(`https://api.github.com/repos/${owner}/${repo}/issues`)
+    const url = new URL(`https://api.github.com/repos/${repo}/issues`)
     url.search = (new URLSearchParams(query)).toString()
 
     /** @type {String} */
@@ -91,10 +90,20 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} },
     }
 }
 
-export default async function main({ min_update_interval = 30 } = {}) {
+export default async function main() {
+    const {
+        data: {
+            source: { repo },
+            min_update_interval,
+        },
+        elements: {
+            container, status, welcome,
+        },
+    } = import_from_container()
+
+
     const { issues } = await list_issues_for_repo({
-        owner: 'YDX-2147483647',
-        repo: 'spacetime',
+        repo,
         query: {
             'state': 'open',
             'sort': 'updated',
@@ -108,19 +117,15 @@ export default async function main({ min_update_interval = 30 } = {}) {
     const relevant_issues = issues
         .filter(issue => mentioned(issue, keywords))
 
-    const aside = document.querySelector('.check-issues')
-    const status_el = aside.querySelector(':scope > div > .status')
-
     if (relevant_issues.length === 0) {
-        aside.classList.add('free-from-issues')
-        status_el.textContent = `现在无人发现此页有问题。（数据可能存在 ${min_update_interval} min 延迟）`
+        container.classList.add('free-from-issues')
+        status.textContent = `现在无人发现此页有问题。（数据可能存在 ${min_update_interval} min 延迟）`
     } else {
-        aside.classList.add('has-issues')
-        status_el.textContent = '现在此页存在以下问题，请谨慎思考。'
+        container.classList.add('has-issues')
+        status.textContent = '现在此页存在以下问题，请谨慎思考。'
 
         const issues_el = document.createElement('ul')
-        aside.querySelector(':scope > div').insertBefore(issues_el,
-            aside.querySelector(':scope > div > .welcome'))
+        welcome.parentElement.insertBefore(issues_el, welcome)
         for (const i of relevant_issues) {
             const li = document.createElement('li')
             li.append(render_as_element(i))
