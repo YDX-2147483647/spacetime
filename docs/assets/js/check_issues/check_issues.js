@@ -31,7 +31,7 @@ function is_too_frequent({ min_update_interval }) {
  * @returns {Promise<{ etag: String, issues: Issue[]}>}
  */
 async function list_issues_for_repo({ owner, repo, auth, query = {} },
-    { min_update_interval = 30 } = {}) {
+    { min_update_interval = 0 } = {}) {
     if (is_too_frequent({ min_update_interval })) {
         return {
             etag: cache.get('etag'),
@@ -91,7 +91,7 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} },
     }
 }
 
-export default async function test() {
+export default async function main({ min_update_interval = 30 } = {}) {
     const { issues } = await list_issues_for_repo({
         owner: 'YDX-2147483647',
         repo: 'spacetime',
@@ -100,16 +100,31 @@ export default async function test() {
             'sort': 'updated',
             'direction': 'desc',
         },
+    }, {
+        min_update_interval
     })
 
     const keywords = get_keywords()
     const relevant_issues = issues
         .filter(issue => mentioned(issue, keywords))
 
-    for (const i of relevant_issues) {
-        const li = document.createElement('li')
-        li.append(render_as_element(i))
-        document.querySelector('#check-issues')
-            .append(li)
+    const aside = document.querySelector('.check-issues')
+    const status_el = aside.querySelector(':scope > div > .status')
+
+    if (relevant_issues.length === 0) {
+        aside.classList.add('free-from-issues')
+        status_el.textContent = `现在无人发现此页有问题。（数据可能存在 ${min_update_interval} min 延迟）`
+    } else {
+        aside.classList.add('has-issues')
+        status_el.textContent = '现在此页存在以下问题，请谨慎思考。'
+
+        const issues_el = document.createElement('ul')
+        aside.querySelector(':scope > div').insertBefore(issues_el,
+            aside.querySelector(':scope > div > .welcome'))
+        for (const i of relevant_issues) {
+            const li = document.createElement('li')
+            li.append(render_as_element(i))
+            issues_el.append(li)
+        }
     }
 }

@@ -47,12 +47,13 @@ export function mentioned(issue, keywords) {
  * @returns {HTMLElement}
  */
 export function render_as_element(issue) {
-    const [,user_name, repo_name, ,] = (new URL(issue.html_url)).pathname.split('/')
+    const [, user_name, repo_name, ,] = (new URL(issue.html_url)).pathname.split('/')
 
     const anchor = document.createElement('a')
     anchor.href = issue.html_url
     anchor.textContent = issue.title
     anchor.title = `issue#${issue.number} in ${user_name}/${repo_name} on GitHub`
+    anchor.target = '_blank'
     return anchor
 }
 
