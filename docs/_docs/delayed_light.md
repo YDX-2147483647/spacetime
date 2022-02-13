@@ -42,7 +42,7 @@ graph:
 
 ### 激光测距
 
-“坐地日行八万里。”地面台站发射的激光经[月表表面回射器](https://images.nasa.gov/details-as14-67-09386)反射，总计 \\(2.6 \\text{ s}\\) 后返回台站。请问地月距离几何？
+“坐地日行八万里。”地面台站发射的激光经[月球表面回射器](https://images.nasa.gov/details-as14-67-09386)反射，总计 \\(2.6 \\text{ s}\\) 后返回台站。请问地月距离几何？
 
 \\( 1.3\\text{ ls} = 3.9 \\times 10^8 \\text{ m} \\)。
 
@@ -74,7 +74,7 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 ### 讨论
 
-以上两例中的时间都代表*同地*不同时的两个事件的时间间隔。的确有第三个*不同地*的事件，但我们并未讨论它的时间坐标，尽管可从别处反推出。银河号不是 Dave Bowman，别处的事它只能事后得知，仅自己世界线上的事件能立即观察。
+以上两例中的时间都代表*同地*不同时的两个事件的时间间隔。的确有第三个*不同地*的事件，但我们并未讨论它的时间坐标，尽管可从别处反推。银河号不是 Dave Bowman，别处的事它只能事后得知，仅自己世界线上的事件能立即观察。
 
 <!-- <aside class='remark'>
     <p>什么叫“事后”？</p>
@@ -95,7 +95,7 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 <figure>
     <div id='graph-2' class='jxgbox'></div>
-    <figcaption>时空图：多普勒效应</figcaption>
+    <figcaption>时空图：末日之战</figcaption>
 </figure>
 
 第 \\(n\\) 次电磁脉冲伴随两个事件：发射（\\(E_n\\)，emission）、击中（\\(H_n\\)，hit）。它们在舰队参照系中的坐标如下。
@@ -111,7 +111,7 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 水滴世界线的方程是 $x = vt$，可得 $H_n$ 的坐标为 $(nvT', nT')$。
 
-由定义 $H_n \in l_n$，所以 $l_n:\ x - nvT' = c (t - nT')$。令 $x=0$，得 $l_n$ 与无限边疆号世界线的交点 $(0,\ nT' - nvT'/c ) = \left( 0,\ n \left( 1 - \frac{v}{c} \right) T' \right)$，这就是 $E_n$。又显然 $E_n (0, nT)$， 故 $T' = T / \left( 1 - \frac{v}{c} \right)$。
+由定义，$H_n \in l_n$，所以 $l_n:\ x - nvT' = c (t - nT')$。令 $x=0$，得 $l_n$ 与无限边疆号世界线的交点 $(0,\ nT' - nvT'/c ) = \left( 0,\ n \left( 1 - \frac{v}{c} \right) T' \right)$，这就是 $E_n$。又显然 $E_n (0, nT)$， 故 $T' = T / \left( 1 - \frac{v}{c} \right)$。
 
 ### 讨论
 
