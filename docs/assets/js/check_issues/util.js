@@ -58,6 +58,13 @@ export function render_as_element(issue) {
 }
 
 
+
+function get_basename() {
+    // Safari before 15.4 does not support `Array.prototype.at`. :-(
+    const paths = window.location.pathname.split('/').filter(i => Boolean(i))
+    return paths[paths.length - 1]
+}
+
 /**
  * @see `/_includes/check_issues.html`
  */
@@ -82,7 +89,7 @@ export function import_from_container() {
                 : container.dataset.min_update_interval
         ),
         title: container.dataset.title,
-        basename: window.location.pathname.split('/').filter(i => Boolean(i)).at(-1),
+        basename: get_basename(),
     }
     data.source.url = `https://github.com/${data.source.repo}/blob/${data.source.folder}/${data.file}`
 
