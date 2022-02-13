@@ -1,0 +1,11 @@
+<aside class='check-issues' data-source.repo="{{ site.check_issues.source.repo }}"
+    data-source.folder="{{ site.check_issues.source.folder }}" data-source.filepath="{{ page.path }}"
+    data-min_update_interval="{{ site.check_issues.min_update_interval }}" data-title="{{ page.title }}">
+    <div>
+        <p class="status">正在从仓库中获取问题记录。</p>
+        <p class="welcome">可查看<a
+                href='https://github.com/{{ site.check_issues.source.repo }}/blob/{{ site.check_issues.source.folder }}/{{ page.path }}'
+                target="_blank">仓库中相应文件</a>，或<a href="https://github.com/{{ site.check_issues.source.repo }}/issues/"
+                target="_blank">搜索／新建 issue</a>。</p>
+    </div>
+</aside>
