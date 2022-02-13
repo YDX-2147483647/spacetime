@@ -1,5 +1,5 @@
 import Cache from './cache.js'
-import { weak_match_etag, mentioned, render_as_element } from './util.js'
+import { weak_match_etag, mentioned, render_as_element, get_keywords } from './util.js'
 
 
 /**
@@ -14,7 +14,7 @@ function is_too_frequent({ min_update_interval }) {
 
     const last_updated_on = new Date(cache.get('last_updated_on'))
     const now = new Date()
-    return now - last_updated_on > min_update_interval
+    return now - last_updated_on < min_update_interval * 60 * 1e3
 }
 
 /**
@@ -31,7 +31,7 @@ function is_too_frequent({ min_update_interval }) {
  * @returns {Promise<{ etag: String, issues: Issue[]}>}
  */
 async function list_issues_for_repo({ owner, repo, auth, query = {} },
-    { min_update_interval = 60 } = {}) {
+    { min_update_interval = 30 } = {}) {
     if (is_too_frequent({ min_update_interval })) {
         return {
             etag: cache.get('etag'),
@@ -70,7 +70,7 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} },
                 `Received: ${received_etag}`,
             ].join('\n'))
         }
-    } else {
+    } else if (response.status === 200) { // OK
         const issues = await response.json()
 
         cache.set('etag', received_etag)
@@ -80,14 +80,21 @@ async function list_issues_for_repo({ owner, repo, auth, query = {} },
             etag: received_etag,
             issues
         }
+    } else {
+        const error = new Error([
+            'Unable to list issues for the repo: ',
+            `Got ${response.status} (${response.statusText}) for ${url.href}. `,
+            'See “error.response” for details.'
+        ].join('\n'))
+        error.response = response
+        throw error
     }
 }
 
 export default async function test() {
     const { issues } = await list_issues_for_repo({
         owner: 'YDX-2147483647',
-        // repo: 'spacetime',
-        repo: 'bulletin-issues-transferred',
+        repo: 'spacetime',
         query: {
             'state': 'open',
             'sort': 'updated',
@@ -95,8 +102,9 @@ export default async function test() {
         },
     })
 
+    const keywords = get_keywords()
     const relevant_issues = issues
-        .filter(issue => mentioned(issue, ['进度']))
+        .filter(issue => mentioned(issue, keywords))
 
     for (const i of relevant_issues) {
         const li = document.createElement('li')

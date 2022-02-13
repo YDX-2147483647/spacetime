@@ -6,6 +6,7 @@ export function weak_match_etag(...tags) {
     return ignored.every(t => t === ignored[0])
 }
 
+
 /** User
  * @type {Object} User
  * @property {String} login username
@@ -53,4 +54,17 @@ export function render_as_element(issue) {
     anchor.textContent = issue.title
     anchor.title = `issue#${issue.number} in ${user_name}/${repo_name} on GitHub`
     return anchor
+}
+
+
+/**
+ * @returns {String[]}
+ */
+export function get_keywords() {
+    return [
+        // `page.title`
+        document.querySelector('meta[property="og:title"]').content,
+        // permalink
+        window.location.pathname.split('/').filter(i => Boolean(i)).at(-1),
+    ]
 }
