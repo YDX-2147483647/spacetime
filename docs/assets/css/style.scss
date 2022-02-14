@@ -60,6 +60,8 @@ details {
     @include italic-or-cursive-swallow();
 
     :lang(en) {
+        // font-family: revert `italic-or-cursive-swallow`;
+        font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-style: italic;
     }
     :not(:lang(en)) {

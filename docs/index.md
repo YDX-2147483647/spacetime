@@ -31,7 +31,7 @@ xkcd: true
 >
 > 我不认为现在学狭义相对论都必须重走爱因斯坦的路，尤其我们已经有优雅简洁的几何理解了。
 >
-> <footer>——<a href='https://www.bilibili.com/video/BV1wW411X7hL'>分钟物理</a>（<a href='https://www.youtube.com/watch?v=1rLWVZVWfdY&list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm'>YouTube</a>）</footer>
+> <footer>——<a href='https://www.bilibili.com/video/BV1wW411X7hL'>分钟物理</a>（<a lang='en' href='https://www.youtube.com/watch?v=1rLWVZVWfdY&list=PLoaVOjvkzQtyjhV55wZcdicAz5KexgKvm'>YouTube</a>）</footer>
 
 <aside class='remark' markdown='1'>
 不同的是，这里**完全不会**排斥公式，而且会找一些例题做。
