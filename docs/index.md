@@ -44,6 +44,8 @@ xkcd: true
 -   Helen Cook《[Relativistic Distortion](https://personal.math.ubc.ca/~cass/courses/m309-01a/cook/)》。
 -   北京鲁迅博物馆（北京新文化运动纪念馆）“[资料查询在线检索系统（鲁迅著作全编系统）](http://www.luxunmuseum.com.cn/cx/)”。
 -   [ScienceClic English](https://www.youtube.com/ScienceClicEN)《[A new way to visualize General Relativity](https://youtu.be/wrwgIjBUYVc)》；[Sooooft](https://space.bilibili.com/4158499) 译《[广义相对论可视化新方法](https://b23.tv/BV1uh411C7R8)》。
+-   [两颗熟李子](https://space.bilibili.com/594380494)《[这是你理解相对论的另一种方法](https://b23.tv/BV17P4y1V7BX)》《[爱因斯坦未能正确理解的相对论视觉效应](https://b23.tv/BV1JY411L7xm)》。
+-   ~~MIT Game Lab “[A Slower Speed of Light](http://gamelab.mit.edu/games/a-slower-speed-of-light/)” “[OpenRelativity](http://gamelab.mit.edu/research/openrelativity/)”。~~
 
 ---
 

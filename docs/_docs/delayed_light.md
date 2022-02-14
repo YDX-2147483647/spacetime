@@ -10,6 +10,7 @@ graph:
     - delayed_light-2
     - delayed_light-3
     - delayed_light-4
+    - delayed_light-5
 ---
 
 狭义相对论讨论*不同*惯性系对相同事情的描述。如果我们选好*一个*惯性系不变，那么相对性原理、光速不变原理都无法应用，就完全没有狭义相对论的事<sub>儿</sub>——可有多少东西真正只涉及一个惯性系？
@@ -145,6 +146,11 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 “看”也是这种过程。光连接了实际物体和观察者。它的世界线从某处出发，然后与 $t$ 轴（设为观察者的世界线）相交。下面定量描述一下。运动是一系列事件，我们先从简单入手。
 
+<aside class='remark'>
+    <p>总之有个“实际情况”，还有个“看起来的情况”。有的地方叫“测量形象”和“视觉形象”，或者 measured 和 visual，也有人叫“观测”和“观察”。这里“观”“看”都是指后者，“观察”“观测”只有定性定量的区别；“实际”“实测”指前者；“测量”仅仅指用仪器得到物理量的数值，不限制具体方法，不过我们尽量避免这个词。</p>
+    <p>不过还请大家别太计较，这不是什么重要结论，还不如想想麦克斯韦电磁学方程组里哪里是 \(\vec E\)，哪里是 \(\vec D\)，以及 \(\vec B\) 与 \(\vec H\)。</p>
+</aside>
+
 ### 事件
 
 对于事件 $(\vec x, t)$，利用[前面的方法](#另法)，可知“看到它”这一事件的坐标是 $(0, t + \abs{\vec x}/c)$。人的眼、脑会怎么理解这个信息呢？我们简单假设，按照“光能瞬间传播”理解。于是视觉上这个事件发生在原处（$\vec{x'} = x$），但 $t'$ 坐标变为 $t + \abs{\vec x}/c$。
@@ -166,4 +172,15 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 上图中的点线就是几例。
 
-设世界线（的方程）为 $\vec{x} = \left. \vec{x} \right\vert_t$。应用 $(\vec{x}, t) \mapsto (\vec{x}, t + \abs{\vec x}/c)$，得 $\vec{x'} = \left. \vec{x} \right\vert_t = \left. \vec{x} \right\vert_{t' - \abs{ \left.\vec{x}\right\vert _ {\color{red} t} }/c }$ ——呃……等等，视觉上 $\vec{x'}$ 本来就不一定是 $t'$ 的*单值*函数了；当然这没考虑速度上限，可我们设出的世界线的形式也没体现速度上限啊。（想必你已试过把图中的 $c$ 调得特别小）
+设世界线（的方程）为 $\vec{x} = \left. \vec{x} \right\vert_t$。应用 $(\vec{x}, t) \mapsto (\vec{x}, t + \abs{\vec x}/c)$，得 $\vec{x}' = \left. \vec{x} \right\vert_t = \left. \vec{x} \right\vert_{t' - \abs{ \left.\vec{x}\right\vert _ {\color{red} t} }/c }$ ——呃……等等，视觉上 $\vec{x}'$ 本来就不一定是 $t'$ 的*单值*函数了；当然这没考虑速度上限，可我们设出的世界线的形式也没体现速度上限啊……（想必你已试过把图中的 $c$ 调得特别小）
+
+退一步，考虑瞬时。如果物体某时刻以速度 $\dv{\vec x}{t} = \vec{v}$ 运动，那么看到这一事件时，视觉上的速度 $\dv{\vec x'}{t'} = \vec v / \dv{t'}{t}$，其中 $\dv{t'}{t} = 1 + \dv{\abs x}{t} / c = 1 + \vec v \cdot \hat x / c$。
+
+<figure>
+    <div id='graph-5'>
+        <div id='graph-5-yx' class='jxgbox'></div>
+        <div id='graph-5-yt' class='jxgbox'></div>
+        <div id='graph-5-tx' class='jxgbox'></div>
+    </div>
+    <figcaption>时空图：轨迹与 \(x\) 轴平行而不重合的匀速运动的质点。</figcaption>
+</figure>

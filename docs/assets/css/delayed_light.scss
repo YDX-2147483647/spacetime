@@ -13,3 +13,15 @@
         }
     }
 }
+
+#graph-5 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 12em);
+    gap: 1em;
+    place-content: center;
+
+    & > .jxgbox {
+        height: 12em;
+        width: 12em;
+    }
+}
