@@ -176,11 +176,13 @@ $ L \left( v^{-1} + c^{-1} \right) $，周期同样为 $T$。
 
 退一步，考虑瞬时。如果物体某时刻以速度 $\dv{\vec x}{t} = \vec{v}$ 运动，那么看到这一事件时，视觉上的速度 $\dv{\vec x'}{t'} = \vec v / \dv{t'}{t}$，其中 $\dv{t'}{t} = 1 + \dv{\abs x}{t} / c = 1 + \vec v \cdot \hat x / c$。
 
+<span class='shady'>然而做这些计算对画下面这些图并没有帮助；还不如想象出实际时空图，然后把 \\(c\\) 调小，变形整个时空。</span>
+
 <figure>
     <div id='graph-5'>
         <div id='graph-5-yx' class='jxgbox'></div>
         <div id='graph-5-yt' class='jxgbox'></div>
         <div id='graph-5-tx' class='jxgbox'></div>
     </div>
-    <figcaption>时空图：轨迹与 \(x\) 轴平行而不重合的匀速运动的质点。</figcaption>
+    <figcaption>视觉时空图：轨迹与 \(x\) 轴平行的匀速运动的若干质点。</figcaption>
 </figure>

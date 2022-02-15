@@ -1,4 +1,5 @@
 import { initBoard } from './common.js'
+import { range } from './util.js'
 
 
 const constants = {
@@ -10,27 +11,51 @@ const constants = {
 /** @typedef {(u: Number) => {t: Number, x: Number, y: Number}} Motion */
 
 /** @type {Motion} */
-const real_motion = time => ({
-    t: time,
-    x: constants.v * time,
-    y: 1,
-})
+function real_motion(y) {
+    return time => ({
+        t: time,
+        x: constants.v * time,
+        y,
+    })
+}
 
-/** @type {{motion: Motion, interval: Number[], color: String, label?: String}[]} */
+/** @type {{motion: Motion, interval: Number[], label?: String[], color: String, dash?: Number}} */
 const real_motions = [
-    {
+    [{
         interval: [-5, 0],
-        motion: real_motion,
+        motion: real_motion(1),
         color: 'blue',
         label: '靠近',
     },
     {
         interval: [0, 5],
-        motion: real_motion,
+        motion: real_motion(1),
         color: 'red',
         label: '远离',
+    }],
+    range(1, 3).concat([0]).map(y => [{
+        interval: [-5, 0],
+        motion: real_motion(y),
+        color: 'blue',
     },
-]
+    {
+        interval: [0, 5],
+        motion: real_motion(y),
+        color: 'red',
+    }]),
+    range(-3, -1).map(y => [{
+        interval: [-5, 0],
+        motion: real_motion(y),
+        color: 'skyblue',
+        dash: 2,
+    },
+    {
+        interval: [0, 5],
+        motion: real_motion(y),
+        color: 'darkred',
+        dash: 2,
+    }]),
+].flat(2)
 
 
 
@@ -50,9 +75,9 @@ function view(motion) {
 
 
 
-const visual_motions = real_motions.map(({ motion, color, label, interval }) => ({
+const visual_motions = real_motions.map(({ motion, ...options }) => ({
     motion: view(motion),
-    color, label, interval
+    ...options
 }))
 
 const boards = new Map(['yx', 'yt', 'tx'].map(axes => [
@@ -68,7 +93,7 @@ const boards = new Map(['yx', 'yt', 'tx'].map(axes => [
 const lines = Array.from(boards.entries()).map(([axes, board]) => {
     const [vertical_axis, horizontal_axis] = axes
 
-    return visual_motions.map(({ motion, color, label, interval }) =>
+    return visual_motions.map(({ motion, color, label, interval, ...options }) =>
         board.create('curve', [
             time => motion(time)[horizontal_axis],
             time => motion(time)[vertical_axis],
@@ -77,6 +102,7 @@ const lines = Array.from(boards.entries()).map(([axes, board]) => {
             strokeColor: color,
             ...(label ? { name: label, withLabel: true, } : {}),
             recursionDepthHigh: 10,
+            ...options,
         })
     )
 })
