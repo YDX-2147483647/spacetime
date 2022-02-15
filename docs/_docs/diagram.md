@@ -72,7 +72,7 @@ style:
 </figcaption>
 </figure>
 
-[^dimensional]: 图片取自<cite markdown='1'>[Estimate of the energy released in the first Atomic Bomb explosion](https://www.atmosp.physics.utoronto.ca/people/codoban/PHY138/Mechanics/dimensional.pdf)</cite>。这是个“抄本”，它指出原文在[一个已经坏掉的链接](http://www.pa.uky.edu/~sps/Month1.htm)。
+[^dimensional]: 图片取自<cite markdown='1'>[Estimate of the energy released in the first Atomic Bomb explosion](https://www.atmosp.physics.utoronto.ca/people/codoban/PHY138/Mechanics/dimensional.pdf){:target='_blank'}</cite>。这是个“抄本”，它指出原文在[一个已经坏掉的链接](http://www.pa.uky.edu/~sps/Month1.htm){:target='_blank'}。
 
 ## 例：冰盘碰冰车
 

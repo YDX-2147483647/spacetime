@@ -33,7 +33,7 @@ graph:
 >
 >     a function, quantity, or property which remains unchanged when a specified transformation is applied.
 >
-> <footer>—— <a lang='en' href='https://www.lexico.com/'>Oxford Languages</a></footer>
+> <footer>—— <a lang='en' href='https://www.lexico.com/' target='_blank'>Oxford Languages</a></footer>
 
 </aside>
 
@@ -43,7 +43,7 @@ graph:
 
 ### 激光测距
 
-“坐地日行八万里。”地面台站发射的激光经[月球表面回射器](https://images.nasa.gov/details-as14-67-09386)反射，总计 \\(2.6 \\text{ s}\\) 后返回台站。请问地月距离几何？
+“坐地日行八万里。”地面台站发射的激光经[月球表面回射器](https://images.nasa.gov/details-as14-67-09386){:target='_blank'}反射，总计 \\(2.6 \\text{ s}\\) 后返回台站。请问地月距离几何？
 
 \\( 1.3\\text{ ls} = 3.9 \\times 10^8 \\text{ m} \\)。
 
