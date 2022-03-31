@@ -33,6 +33,10 @@ style:
     <p>与中学的习惯不同，这里的时间轴一般作纵轴，所以也许叫“$t$-$x$图”更好。不过这都无所谓，就叫时空图（spacetime diagram）吧。</p>
 </aside>
 
+<aside class='remark'>
+    <p>3Blue1Brown 借方块碰撞出现 \(\pi\) 介绍相图：<a href="https://www.bilibili.com/video/BV1nt411p7F9" target='_blank'>问题</a>、<a href="https://www.bilibili.com/video/BV1bt41147H5" target='_blank'>速度空间法</a>、<a href="https://www.bilibili.com/video/BV1Mb41187jL" target='_blank'>位置空间法</a>。</p>
+</aside>
+
 类似地，质点的运动在“\\( Oxt\\) 平面”内用线表示，称作**世界线**。（质点的任意运动都可表示为线，那么所有的线都存在对应的运动吗？）
 
 <aside class='remark'>

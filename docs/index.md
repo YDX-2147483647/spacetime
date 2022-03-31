@@ -46,6 +46,7 @@ xkcd: true
 -   [ScienceClic English](https://www.youtube.com/ScienceClicEN){:target='_blank'}《[A new way to visualize General Relativity](https://youtu.be/wrwgIjBUYVc){:target='_blank'}》；[Sooooft](https://space.bilibili.com/4158499){:target='_blank'} 译《[广义相对论可视化新方法](https://b23.tv/BV1uh411C7R8){:target='_blank'}》。
 -   [两颗熟李子](https://space.bilibili.com/594380494){:target='_blank'}《[这是你理解相对论的另一种方法](https://b23.tv/BV17P4y1V7BX){:target='_blank'}》《[爱因斯坦未能正确理解的相对论视觉效应](https://b23.tv/BV1JY411L7xm){:target='_blank'}》。
 -   ~~MIT Game Lab “[A Slower Speed of Light](http://gamelab.mit.edu/games/a-slower-speed-of-light/){:target='_blank'}” “[OpenRelativity](http://gamelab.mit.edu/research/openrelativity/){:target='_blank'}”。~~
+-    戴希、沙威、陈昊《[对于麦克斯韦方程组，洛伦兹变换的低速极限是伽利略变换吗？](https://mp.weixin.qq.com/s/x9GiJCfiujNkuuS1XZcAQw){: target='_blank'}》，《物理》2022年第3期，返朴。
 
 ---
 
